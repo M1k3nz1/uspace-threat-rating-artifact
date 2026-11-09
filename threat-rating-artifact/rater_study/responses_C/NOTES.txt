@@ -1,0 +1,2 @@
+Condition C responses (SecRAM-native), 3 models x 3 runs, saved as received.
+The three Claude files contained typographic (curly) quotation marks, which are invalid JSON; they were converted mechanically to ASCII quotes. No value or text was changed.

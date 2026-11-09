@@ -1,0 +1,136 @@
+{
+ "res": [
+  {
+   "name": "D: High if >=2 High factors",
+   "band_changed": 0.3292181069958848,
+   "cell_changed": 0.2551440329218107,
+   "comp_changed": 0.07501114893280722,
+   "maxshift": 1,
+   "worst_dscore": 0.22222222222222232,
+   "ex_bands_same": true,
+   "ex_cell_same": true,
+   "tau": 0.8915777626024731
+  },
+  {
+   "name": "D: High if >=4 High factors",
+   "band_changed": 0.1646090534979424,
+   "cell_changed": 0.1522633744855967,
+   "comp_changed": 0.027655625616641043,
+   "maxshift": 1,
+   "worst_dscore": 0.22222222222222232,
+   "ex_bands_same": false,
+   "ex_cell_same": false,
+   "tau": 0.9299358373059918
+  },
+  {
+   "name": "A: High only if scope and cascading both High",
+   "band_changed": 0.6666666666666666,
+   "cell_changed": 0.49382716049382713,
+   "comp_changed": 0.3295467731444632,
+   "maxshift": 1,
+   "worst_dscore": 0.48148148148148184,
+   "ex_bands_same": true,
+   "ex_cell_same": true,
+   "tau": 0.7212729419420258
+  },
+  {
+   "name": "E,R: Medium cut-off 7",
+   "band_changed": 0.06172839506172839,
+   "cell_changed": 0.06172839506172839,
+   "comp_changed": 0.044188034670515325,
+   "maxshift": 1,
+   "worst_dscore": 0.518518518518519,
+   "ex_bands_same": true,
+   "ex_cell_same": true,
+   "tau": 0.9089243041561236
+  },
+  {
+   "name": "E,R: Medium cut-off 9",
+   "band_changed": 0.12345679012345678,
+   "cell_changed": 0.12345679012345678,
+   "comp_changed": 0.08837606934103065,
+   "maxshift": 1,
+   "worst_dscore": 0.518518518518519,
+   "ex_bands_same": true,
+   "ex_cell_same": true,
+   "tau": 0.8273577682669346
+  },
+  {
+   "name": "D2: Medium cut-off 5",
+   "band_changed": 0.04938271604938271,
+   "cell_changed": 0.014022252705380277,
+   "comp_changed": 0.017436868187939332,
+   "maxshift": 1,
+   "worst_dscore": 0.22222222222222232,
+   "ex_bands_same": true,
+   "ex_cell_same": true,
+   "tau": 0.9792891560467891
+  },
+  {
+   "name": "D2: Medium cut-off 7",
+   "band_changed": 0.1111111111111111,
+   "cell_changed": 0.03155006858710562,
+   "comp_changed": 0.039232953422863495,
+   "maxshift": 1,
+   "worst_dscore": 0.22222222222222232,
+   "ex_bands_same": true,
+   "ex_cell_same": true,
+   "tau": 0.9559492481124383
+  },
+  {
+   "name": "High range starts at 7 (D2: 6)",
+   "band_changed": 0.0,
+   "cell_changed": 0.5344581994990978,
+   "comp_changed": 0.28534995731730645,
+   "maxshift": 1,
+   "worst_dscore": 0.18518518518518556,
+   "ex_bands_same": true,
+   "ex_cell_same": null
+  },
+  {
+   "name": "High range starts at 9 (D2: 8)",
+   "band_changed": 0.0,
+   "cell_changed": 0.09465020576131687,
+   "comp_changed": 0.15817873793453396,
+   "maxshift": 1,
+   "worst_dscore": 0.18518518518518512,
+   "ex_bands_same": true,
+   "ex_cell_same": null
+  },
+  {
+   "name": "Medium range starts at 4 (D2: 3)",
+   "band_changed": 0.0,
+   "cell_changed": 0.35239220659803566,
+   "comp_changed": 0.3111972918912918,
+   "maxshift": 1,
+   "worst_dscore": 0.18518518518518556,
+   "ex_bands_same": true,
+   "ex_cell_same": null
+  },
+  {
+   "name": "Medium range starts at 6 (D2: 5)",
+   "band_changed": 0.0,
+   "cell_changed": 0.034141137021795456,
+   "comp_changed": 0.16818486592741871,
+   "maxshift": 1,
+   "worst_dscore": 0.18518518518518556,
+   "ex_bands_same": true,
+   "ex_cell_same": null
+  }
+ ],
+ "base_dist": {
+  "1": 0.0,
+  "2": 0.015440409502967717,
+  "3": 0.3650790962684475,
+  "4": 0.6044082660790818,
+  "5": 0.015072228149502955
+ },
+ "n": 4782969,
+ "ex_base": {
+  "D": 2,
+  "A": 2,
+  "E": 1,
+  "R": 2,
+  "D2": 1
+ }
+}

@@ -1,0 +1,22 @@
+id,layer,asset,D,R,E,A,D2,S,evidence
+GOV-01,Governance,Competent Authority Systems,7,5,6,6,7,2,Weak
+GOV-02,Governance,Regulatory Framework / Legal Instrument,6,5,6,5,6,2,Moderate
+GOV-03,Governance,Strategic Planning & Decision Systems,7,5,6,6,7,2,None
+SVC-01,Service,Registration & Electronic ID (EID),8,7,8,8,7,3,Strong
+SVC-02,Service,Tracking & Monitoring Service,9,7,9,8,8,4,Weak
+SVC-03,Service,Flight Authorization / U-Plan Service,9,6,8,8,7,5,Weak
+SVC-04,Service,API Gateway (Service Layer),8,7,7,8,7,4,Weak
+SVC-05,Service,Geo-Awareness Service (USSP),7,6,7,7,7,3,Moderate
+DAT-01,Data,Geo-Awareness Database,9,8,7,8,8,4,Weak
+DAT-02,Data,CIS / Single Source of Truth (SSOT),9,7,8,8,8,5,Strong
+DAT-03,Data,Traffic Data & Weather Services,7,6,6,7,7,3,Moderate
+DAT-04,Data,Logs & Audit Trails,8,7,6,8,7,3,Weak
+DAT-05,Data,Data Layer API Gateway,8,7,7,8,8,3,Weak
+DAT-06,Data,Database Server,9,7,8,8,9,4,Weak
+INF-01,Infrastructure,GNSS / Navigation Sources,9,7,7,8,6,4,Strong
+INF-02,Infrastructure,Communication Networks (C2/VHF/CNSS),10,8,8,9,7,5,Strong
+INF-03,Infrastructure,UAS / Drone Hardware,9,6,7,7,5,4,Moderate
+INF-04,Infrastructure,Power & Infrastructure,8,4,5,8,4,3,Weak
+INF-05,Infrastructure,Sensors & Ground Stations,7,8,7,7,6,4,Strong
+INF-06,Infrastructure,Vertiports & Ground Facilities,8,3,6,8,5,3,Moderate
+INF-07,Infrastructure,Supply Chain & Maintenance,10,6,7,9,7,5,Weak

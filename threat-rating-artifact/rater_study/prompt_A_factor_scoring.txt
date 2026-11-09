@@ -1,0 +1,279 @@
+You are an experienced security risk assessor for U-Space (the EU framework for unmanned-aircraft traffic management). You will assess 21 architectural assets of a U-Space system. Each asset has a short brief. Use ONLY the brief and your general domain knowledge. You are NOT given, and must NOT try to recall, any risk score from any catalogue or paper. Rate every asset independently on the same scale; do not force a spread and do not rank the assets against each other.
+
+TASK. For each asset, score the 14 evidence factors below as 1 (Low), 2 (Medium) or 3 (High). Orientation: a higher score ALWAYS means a higher resulting risk rating. Also give the safety rating S (integer 1-5).
+
+IMPACT EVIDENCE FACTORS
+ safety      : 1 = no safety consequence; 2 = degrades separation, situational awareness or a safety barrier but no direct collision path; 3 = could plausibly contribute to loss of an aircraft, collision or harm to people.
+ scope       : 1 = single UAV or single operator; 2 = several operators or one service area; 3 = fleet-wide or the whole U-Space airspace.
+ regulatory  : 1 = little regulatory consequence; 2 = indirect consequence for compliance; 3 = breach of mandatory EU U-Space / EASA / Part-IS obligations with certification or legal consequence.
+ cascading   : 1 = isolated to the asset; 2 = spreads to several components in one layer; 3 = propagates across two or more layers (see the propagation field).
+ recovery    : 1 = quick, automatic or trivial recovery; 2 = hours of manual effort or partial loss; 3 = hard to recover (integrity loss that is hard to detect, hardware replacement, long manual fallback).
+LIKELIHOOD EVIDENCE FACTORS
+ exposure    : 1 = internal or physically restricted; 2 = partner / authenticated network; 3 = publicly reachable (internet or open radio interface).
+ access      : 1 = needs privileged or physical access; 2 = needs a valid account or radio proximity; 3 = no or low barrier (remote, unauthenticated).
+ maturity    : 1 = theoretical only; 2 = demonstrated in research or simulation; 3 = documented in the wild or public proof of concept.
+ tools       : 1 = custom development needed; 2 = existing tools need specialist adaptation; 3 = freely available, ready-to-use tools.
+ automation  : 1 = manual, one-off effort; 2 = partly scriptable; 3 = fully scriptable and repeatable at scale.
+VISIBILITY EVIDENCE FACTORS
+ documentation : 1 = proprietary or undocumented; 2 = partly documented; 3 = publicly documented specifications.
+ interface     : 1 = opaque interfaces; 2 = partly transparent; 3 = public and transparent interfaces.
+ complexity    : 1 = complex, hard to find weaknesses; 2 = moderate; 3 = simple, easy to understand and probe.
+ monitoring    : 1 = strong monitoring and detection; 2 = partial; 3 = effectively no monitoring (flaws stay unnoticed).
+SAFETY RATING S: 1 = none (SAIL I); 2 = minor; 3 = moderate (SAIL III); 4 = serious (SAIL IV); 5 = catastrophic (SAIL V-VI).
+
+OUTPUT. Reply with ONE JSON array and nothing else (no markdown fence, no commentary). One object per asset, in the order given, exactly this shape:
+{"id":"<asset id>","safety":n,"scope":n,"regulatory":n,"cascading":n,"recovery":n,"exposure":n,"access":n,"maturity":n,"tools":n,"automation":n,"documentation":n,"interface":n,"complexity":n,"monitoring":n,"S":n,"why":"<=20 words"}
+All values except id and why are integers.
+
+ASSETS
+[DAT-01] Geo-Awareness Database (Data & Information layer)
+  Attack types: Tampering, API Injection
+  Attack vectors: API data injection; malicious feed input; no-fly zone record deletion
+  Weaknesses: Insecure APIs; no input validation; absent write-access controls
+  Threat scenario: No-fly zone boundary removed via unsecured API; restricted airspace opened to UAS operations
+  Potential damage: Wrong geo-awareness map data; UAS authorised into restricted zones
+  Affected parts: Geo-Awareness DB, CIS layer
+  Cross-layer propagation: Service Layer: geo-awareness service → flight authorisation error
+  Regulation: EU 2021/664 Art.9 (geo-awareness); Part-IS IS.I.OR.200; OWASP API Security Top 10
+  Cited sources: Elia et al. (2025) ACM JATS; Miranda et al. (2026) arXiv
+  Vulnerability records: 4 CVE record(s) in the same technology class (not this exact product)
+
+[DAT-02] CIS / Single Source of Truth (SSOT) (Data & Information layer)
+  Attack types: Tampering, Data Poisoning
+  Attack vectors: Malicious data input; telemetry poisoning; SSOT write injection
+  Weaknesses: No input validation; absent data integrity verification; single point of failure
+  Threat scenario: Poisoned telemetry propagates through SSOT to all dependent U-Space services simultaneously
+  Potential damage: Corrupted shared operational data; cascading service decision failures
+  Affected parts: SSOT layer, all dependent U-Space services
+  Cross-layer propagation: Service Layer: all mandatory services; Governance Layer: compliance monitoring
+  Regulation: EU 2021/664 Art.5 (common information services); Part-IS IS.I.OR.200; MITRE ATT&CK T1565
+  Cited sources: Elia et al. (2025) ACM JATS; Nawaz (2025) Regulation & Governance
+  Vulnerability records: 3 CVE record(s) in the same technology class (not this exact product)
+
+[DAT-03] Traffic Data & Weather Services (Data & Information layer)
+  Attack types: Spoofing, Feed Manipulation
+  Attack vectors: Third-party weather feed manipulation; fake meteorological data injection
+  Weaknesses: Unverified third-party sources; no data provenance controls
+  Threat scenario: Fake weather data creates unsafe routing; traffic feed compromised causing conflict between UAS
+  Potential damage: Unsafe routing decisions; UAS dispatched into adverse weather conditions
+  Affected parts: Weather Service API, Traffic Data feeds
+  Cross-layer propagation: Service Layer: traffic information service; geo-awareness service
+  Regulation: EU 2021/664 Art.11, 12 (traffic, weather information); Part-IS IS.I.OR.200
+  Cited sources: Elia et al. (2025) ACM JATS; OWASP API Security Top 10 (2023)
+  Vulnerability records: 2 CVE record(s) in UAS/U-Space/GNSS products
+
+[DAT-04] Logs & Audit Trails (Data & Information layer)
+  Attack types: Repudiation, Log Tampering
+  Attack vectors: Log overwriting; SIEM manipulation; WORM integrity bypass
+  Weaknesses: No log immutability; absent WORM controls; weak SIEM access controls
+  Threat scenario: Attack logs tampered to conceal GNSS spoofing incident; full audit trail deleted post-attack
+  Potential damage: Incident cover-up; inability to reconstruct attack timeline; regulatory compliance failure
+  Affected parts: SIEM system, Log DB, audit infrastructure
+  Cross-layer propagation: Governance Layer: compliance evidence; Service Layer: incident response capability
+  Regulation: EU 2021/664 Art.15(1)(g) (retention of recorded data); Part-IS IS.I.OR.200; Part-IS IS.I.OR.205
+  Cited sources: Miranda et al. (2026) arXiv [WORM log integrity]; NIST SP 800-92 Rev.1 (2023)
+  Vulnerability records: 1 CVE record(s) in UAS/U-Space/GNSS products
+
+[DAT-05] Data Layer API Gateway (Data & Information layer)
+  Attack types: Spoofing, Information Disclosure
+  Attack vectors: API key leakage; credential stuffing; mass query abuse
+  Weaknesses: Weak authentication; absent rate limiting; API key management failure
+  Threat scenario: Stolen API key used for mass queries; sensitive flight plan data exfiltrated in bulk
+  Potential damage: Unauthorised bulk data access; exfiltration of operational flight data
+  Affected parts: Data API Gateway, downstream data consumers
+  Cross-layer propagation: Service Layer: all mandatory services depend on data integrity
+  Regulation: EU 2021/664 Art.15(1)(f); Part-IS IS.I.OR.200; OWASP API Security (API8)
+  Cited sources: Miranda et al. (2026) arXiv; OWASP API Security Top 10 (2023)
+  Vulnerability records: 4 CVE record(s) in the same technology class (not this exact product)
+
+[DAT-06] Database Server (Data & Information layer)
+  Attack types: Tampering, SQL Injection
+  Attack vectors: SQL injection; unpatched software exploitation; unauthorised DB access
+  Weaknesses: Unpatched software; insufficient input sanitisation; absent DB hardening
+  Threat scenario: SQL injection on USSP database results in mass flight plan record exfiltration and corruption
+  Potential damage: Bulk data loss or exfiltration; corrupted operational records; service failure
+  Affected parts: Database Server, operational data store
+  Cross-layer propagation: Service Layer: all data-dependent U-Space services degraded
+  Regulation: EU 2021/664 Art.15(1)(f); Part-IS IS.I.OR.200; OWASP Top 10 A03 Injection
+  Cited sources: Miranda et al. (2026) arXiv; OWASP Top 10 (2025); CIS SQL Server Benchmarks
+  Vulnerability records: 4 CVE record(s) in the same technology class (not this exact product)
+
+[GOV-01] Competent Authority Systems (Governance & Strategic layer)
+  Attack types: Repudiation, Accountability Failure
+  Attack vectors: Lost accountability records; audit log manipulation; oversight evasion
+  Weaknesses: Weak auditing mechanisms; absent enforcement logging; no tamper-proof records
+  Threat scenario: Competent authority audit logs tampered; USSP violations go undetected and unpunished by regulator
+  Potential damage: Unchecked regulatory violations; inability to enforce penalties; loss of public trust
+  Affected parts: Regulatory DB, enforcement systems
+  Cross-layer propagation: Data Layer: audit trails integrity; Service Layer: compliance monitoring capability
+  Regulation: EU 2021/664 Art.17–18 (competent authority); Part-IS IS.I.OR.200; ICAO Doc 9735
+  Cited sources: Bustos Moreno (2025) Springer; Rizzo & Ingratoci (2025) Springer; EDA Study (2023)
+  Vulnerability records: 4 CVE record(s) in the same technology class (not this exact product)
+
+[GOV-02] Regulatory Framework / Legal Instrument (Governance & Strategic layer)
+  Attack types: Tampering, Policy Exploitation
+  Attack vectors: Regulatory loophole exploitation; deliberate compliance ambiguity abuse
+  Weaknesses: Outdated or ambiguous legislation; absent enforcement mechanisms; implementation gaps
+  Threat scenario: Regulatory ambiguities exploited to operate USSP without required cybersecurity management system
+  Potential damage: Systematic misuse of U-Space through legal loopholes; absent cybersecurity governance
+  Affected parts: Legal Framework, USSP certification process
+  Cross-layer propagation: All layers: absence of regulatory enforcement affects all security obligations across all layers
+  Regulation: EU 2021/664 Art.7 (USSPs); Art.15(1)(f); EU 2023/203 Part-IS; EASA AMC/GM
+  Cited sources: Nawaz (2025) Regulation & Governance; Bustos Moreno (2025) Springer
+  Vulnerability records: no CVE applicable
+
+[GOV-03] Strategic Planning & Decision Systems (Governance & Strategic layer)
+  Attack types: Information Disclosure, Espionage
+  Attack vectors: Leaked risk assessment data; insider exfiltration; strategic document compromise
+  Weaknesses: Insufficient access controls; weak document classification; insider threat vectors
+  Threat scenario: Strategic U-Space deployment plan leaked; risk register and threat catalogue exfiltrated by adversary
+  Potential damage: Adversarial intelligence gain; compromised U-Space deployment strategy; competitive harm
+  Affected parts: Executive planning systems, classified risk and strategic documents
+  Cross-layer propagation: Data Layer: confidential records; Infrastructure Layer: document management systems
+  Regulation: EU 2021/664 Art.15(1)(f); Part-IS IS.I.OR.200; ISO/IEC 27005:2022
+  Cited sources: Casaril & Galletta (2025) J.Cybersecurity; EDA Study Bajzikova et al. (2023)
+  Vulnerability records: 5 CVE record(s) in the same technology class (not this exact product)
+
+[INF-01] GNSS / Navigation Sources (Infrastructure & Physical layer)
+  Attack types: Spoofing, Jamming
+  Attack vectors: External RF spoofing, signal interference
+  Weaknesses: No cryptographic authentication; single-source GNSS dependency
+  Threat scenario: GPS spoofing causes UAS deviation into restricted airspace; GNSS jamming causes complete loss of positioning
+  Potential damage: Loss of accurate positioning; UAS deviation into restricted airspace
+  Affected parts: GNSS Receiver, Flight Controller
+  Cross-layer propagation: Service Layer: geo-awareness corruption → flight authorisation error
+  Regulation: EU 2021/664 Art.15(1)(f); Part-IS IS.I.OR.200; SORA SAIL IV–V
+  Cited sources: Shepard et al. (2012) GPS World; Asghari et al. (2026) IEEE TDSC; Casaril & Galletta (2025)
+  Vulnerability records: no CVE applicable
+
+[INF-02] Communication Networks (C2/VHF/CNSS) (Infrastructure & Physical layer)
+  Attack types: Denial of Service, Tampering, MITM
+  Attack vectors: RF jamming, MITM, protocol abuse, C2 link flooding
+  Weaknesses: Lack of encryption/authentication; legacy protocols; no C2 redundancy
+  Threat scenario: C2 link jammed during BVLOS flight; drone enters fail-safe and crashes; MAVLink traffic intercepted
+  Potential damage: Loss of control signals; uncontrolled drone; collision risk
+  Affected parts: Communication Link, GCS, MAVLink bus
+  Cross-layer propagation: Service Layer: flight authorisation; Data Layer: telemetry integrity
+  Regulation: EU 2021/664 Art.15(1)(k); Part-IS IS.I.OR.200; SORA SAIL V–VI
+  Cited sources: Hartmann & Steup (2013) CyCon; Kim et al. (2012) AIAA; Miranda et al. (2026) arXiv
+  Vulnerability records: 7 CVE record(s) in UAS/U-Space/GNSS products
+
+[INF-03] UAS / Drone Hardware (Infrastructure & Physical layer)
+  Attack types: Tampering, Firmware Injection
+  Attack vectors: Physical access; exposed debug ports (UART/JTAG); software update hijack
+  Weaknesses: Unprotected firmware; unsigned updates; exposed debug interfaces
+  Threat scenario: Backdoored flight controller installed at production; firmware update delivers malware to PX4
+  Potential damage: Persistent device compromise; backdoored flight controller; crash risk
+  Affected parts: Flight Controller, PX4 autopilot
+  Cross-layer propagation: Service Layer: tracking & monitoring; Data Layer: telemetry feeds
+  Regulation: EU 2021/664 Art.15(1)(f); Part-IS IS.I.OR.200
+  Cited sources: Niyonsaba et al. (2023) IJCNA; Asghari et al. (2026) IEEE TDSC
+  Vulnerability records: 9 CVE record(s) in UAS/U-Space/GNSS products
+
+[INF-04] Power & Infrastructure (Infrastructure & Physical layer)
+  Attack types: Denial of Service
+  Attack vectors: Power interruption; battery depletion attack; BMS manipulation
+  Weaknesses: No power redundancy; unsecured Battery Management System (BMS)
+  Threat scenario: Power outage at ground station causes complete operational shutdown; BMS manipulation depletes battery mid-flight
+  Potential damage: Ground station shutdown; mission abort; uncontrolled landing
+  Affected parts: Power Supply, BMS, GCS
+  Cross-layer propagation: Service Layer: USSP availability and service continuity
+  Regulation: EU 2021/664 Art.15(1)(k); Part-IS IS.I.OR.200; NIST SP 800-82 Rev.3
+  Cited sources: NIST SP 800-82 Rev.3 (2023); SESAR JU U-Space ConOps Ed.4 (2023)
+  Vulnerability records: 1 CVE record(s) in UAS/U-Space/GNSS products
+
+[INF-05] Sensors & Ground Stations (Infrastructure & Physical layer)
+  Attack types: Spoofing, Tampering
+  Attack vectors: Sensor signal injection; data link interference; IMU manipulation
+  Weaknesses: No sensor fusion validation; lack of cross-sensor verification
+  Threat scenario: Fake altitude broadcasts cause incorrect flight decisions; IMU manipulation causes crashes (Asghari et al.)
+  Potential damage: Wrong sensor data propagated to flight decisions; crash risk
+  Affected parts: GPS Receiver, IMU, Altimeter
+  Cross-layer propagation: Data Layer: telemetry; Service Layer: conformance monitoring
+  Regulation: EU 2021/664 Art.15(1)(f); Part-IS IS.I.OR.205; SORA SAIL IV
+  Cited sources: Asghari et al. (2026) IEEE TDSC; Shepard et al. (2012) GPS World
+  Vulnerability records: no CVE applicable
+
+[INF-06] Vertiports & Ground Facilities (Infrastructure & Physical layer)
+  Attack types: Physical Sabotage, Unauthorized Access
+  Attack vectors: Tailgating; social engineering; physical terminal compromise
+  Weaknesses: Weak physical access controls; unprotected POS and control terminals
+  Threat scenario: Critical vertiport control panel sabotaged; UAM landing zone physically compromised
+  Potential damage: Facility misuse; vertiport control panel sabotage; UAM safety risk
+  Affected parts: Vertiport Access Systems, Control Panels
+  Cross-layer propagation: Service Layer: traffic information; Governance Layer: compliance
+  Regulation: EU 2021/664: no direct article; Part-IS IS.I.OR.200
+  Cited sources: Pascarella et al. (2025) IET Radar; Stanev (2025) CEEOL
+  Vulnerability records: 2 CVE record(s) in the same technology class (not this exact product)
+
+[INF-07] Supply Chain & Maintenance (Infrastructure & Physical layer)
+  Attack types: Tampering, Spoofing
+  Attack vectors: Component substitution; vendor compromise; code signing bypass
+  Weaknesses: Weak vendor controls; no hardware code signing; no SBOM verification
+  Threat scenario: Backdoored firmware distributed via trusted vendor; COTS component compromise affects all deployed UAS
+  Potential damage: Backdoored hardware distributed through legitimate supply chain; persistent compromise
+  Affected parts: Drone hardware build, firmware packages
+  Cross-layer propagation: All layers: persistent cross-layer compromise from supply chain entry point
+  Regulation: EU 2021/664 Art.15(1)(f); Part-IS IS.I.OR.200; EU Cyber Resilience Act
+  Cited sources: Casaril & Galletta (2025) J.Cybersecurity; Niyonsaba et al. (2023) IJCNA
+  Vulnerability records: 1 CVE record(s) in UAS/U-Space/GNSS products
+
+[SVC-01] Registration & Electronic ID (EID) (Service layer)
+  Attack types: Identity Spoofing
+  Attack vectors: Fake identity submission; stolen credentials; weak identity proofing
+  Weaknesses: Weak identity proofing; absent multi-factor authentication; no real-time validation
+  Threat scenario: Fake pilot identity registered; stolen operator credentials used to authorise flights illegally
+  Potential damage: Unauthorised UAS registered; unaccountable drone operations in shared airspace
+  Affected parts: Registry Service, UAS operator database
+  Cross-layer propagation: Governance Layer: regulatory compliance; Data Layer: identity records integrity
+  Regulation: EU 2021/664 Art.8 (network identification); Part-IS IS.I.OR.200; NIST SP 800-63
+  Cited sources: Strohmeier et al. (2014) IEEE COMST; Elia et al. (2025) ACM JATS
+  Vulnerability records: 2 CVE record(s) in UAS/U-Space/GNSS products
+
+[SVC-02] Tracking & Monitoring Service (Service layer)
+  Attack types: Telemetry Injection, Tampering
+  Attack vectors: False telemetry injection; GNSS replay into tracking system
+  Weaknesses: No telemetry input validation; absent anomaly detection; trusts GNSS blindly
+  Threat scenario: Fake GPS position injected into tracking system; phantom aircraft appear; real conflicts go undetected
+  Potential damage: False aircraft position in Common Operating Picture; conflict detection failure
+  Affected parts: Tracking DB, surveillance feed, Common Operating Picture
+  Cross-layer propagation: Data Layer: telemetry records; Governance Layer: accountability and audit trail
+  Regulation: EU 2021/664 Art.11 (traffic information); Part-IS IS.I.OR.200; SORA SAIL IV
+  Cited sources: Asghari et al. (2026) IEEE TDSC; Strohmeier et al. (2014) IEEE COMST
+  Vulnerability records: 4 CVE record(s) in UAS/U-Space/GNSS products
+
+[SVC-03] Flight Authorization / U-Plan Service (Service layer)
+  Attack types: Elevation of Privilege, Token Bypass
+  Attack vectors: JWT None Algorithm attack; OAuth scope escalation; authorisation policy manipulation
+  Weaknesses: JWT None Algorithm vulnerability; improper OAuth 2.0 client credential handling; weak access control
+  Threat scenario: JWT None Algorithm attack bypasses signature verification; unrestricted flight authorisation granted to unauthorised operator
+  Potential damage: Illegal or conflicting flights authorised; restricted airspace access granted without approval
+  Affected parts: U-Plan Service, authorisation engine, InterUSS DSS
+  Cross-layer propagation: Data Layer: flight plan records; Governance Layer: regulatory compliance and certification
+  Regulation: EU 2021/664 Art.10 (flight authorisation); Part-IS IS.I.OR.200; SORA SAIL V–VI
+  Cited sources: Miranda et al. (2026) arXiv [JWT attacks]; Elia et al. (2025) ACM JATS
+  Vulnerability records: 7 CVE record(s) in the same technology class (not this exact product)
+
+[SVC-04] API Gateway (Service Layer) (Service layer)
+  Attack types: Denial of Service, Rate Abuse
+  Attack vectors: API endpoint flooding; DDoS; malformed request injection
+  Weaknesses: No rate limiting; absent DDoS mitigation; single API gateway point of failure
+  Threat scenario: API flood disrupts all U-Space services; flight authorisations unavailable for entire volume
+  Potential damage: Complete USSP service outage; all operators lose access; scheduled flights grounded
+  Affected parts: API Gateway, all downstream USSP services
+  Cross-layer propagation: Data Layer: data availability; Governance Layer: service continuity obligations
+  Regulation: EU 2021/664 Art.15(1)(k); Part-IS IS.I.OR.200; SORA SAIL IV–V
+  Cited sources: Miranda et al. (2026) arXiv; OWASP API Security Top 10 (2023)
+  Vulnerability records: 4 CVE record(s) in the same technology class (not this exact product)
+
+[SVC-05] Geo-Awareness Service (USSP) (Service layer)
+  Attack types: Feed Compromise, Spoofing
+  Attack vectors: Compromised geo-awareness data feed; fake geofence boundary injection
+  Weaknesses: Unverified data sources; absent feed authentication and integrity checks
+  Threat scenario: Fake geofence data injected; controlled airspace boundary modified; UAS fly into restricted zone
+  Potential damage: Unsafe routing authorised; UAS enter restricted zones based on falsified geofences
+  Affected parts: Geo-Awareness Service, CIS layer, USSP routing engine
+  Cross-layer propagation: Data Layer: geo-awareness DB integrity; Governance Layer: airspace designation compliance
+  Regulation: EU 2021/664 Art.9 (geo-awareness); Part-IS IS.I.OR.200
+  Cited sources: Elia et al. (2025) ACM JATS; Nawaz (2025) Regulation & Governance
+  Vulnerability records: 3 CVE record(s) in UAS/U-Space/GNSS products

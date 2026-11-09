@@ -1,0 +1,7 @@
+Condition A (evidence-factor scoring), 3 models x 3 independent runs, fresh chat per run, same prompt (rater_study/prompt_A_factor_scoring.txt).
+Models as named by the researcher (VERIFY the exact version strings shown by each product before submission):
+  claude  = Claude Sonnet 5.5
+  gpt     = ChatGPT (GPT-6)
+  gemini  = Gemini 1.5 Pro
+Responses were collected on 2026-11-08 (file timestamps). Condition B (direct DREAD ratings) was not run. Qwen was not run.
+Processing note: the three Claude files contained typographic quotes (curly quotes) introduced when copying the reply; they were converted to ASCII quotes mechanically. No value or text was changed.

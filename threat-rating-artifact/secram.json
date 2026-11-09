@@ -1,0 +1,966 @@
+{
+ "assets": [
+  {
+   "id": "GOV-01",
+   "ev": "Weak",
+   "w": 0.5,
+   "default": {
+    "cell": [
+     3,
+     3
+    ],
+    "risk": "Medium",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "round": {
+    "cell": [
+     3,
+     3
+    ],
+    "risk": "Medium",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "maximpact": {
+    "cell": [
+     3,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   }
+  },
+  {
+   "id": "GOV-02",
+   "ev": "Moderate",
+   "w": 0.75,
+   "default": {
+    "cell": [
+     3,
+     3
+    ],
+    "risk": "Medium",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "round": {
+    "cell": [
+     3,
+     3
+    ],
+    "risk": "Medium",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "maximpact": {
+    "cell": [
+     3,
+     3
+    ],
+    "risk": "Medium",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   }
+  },
+  {
+   "id": "GOV-03",
+   "ev": "None",
+   "w": 0.25,
+   "default": {
+    "cell": [
+     3,
+     3
+    ],
+    "risk": "Medium",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "round": {
+    "cell": [
+     3,
+     3
+    ],
+    "risk": "Medium",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "maximpact": {
+    "cell": [
+     3,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   }
+  },
+  {
+   "id": "SVC-01",
+   "ev": "Strong",
+   "w": 1.0,
+   "default": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "SVC-02",
+   "ev": "Weak",
+   "w": 0.5,
+   "default": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "SVC-03",
+   "ev": "Weak",
+   "w": 0.5,
+   "default": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "SVC-04",
+   "ev": "Weak",
+   "w": 0.5,
+   "default": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "SVC-05",
+   "ev": "Moderate",
+   "w": 0.75,
+   "default": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "round": {
+    "cell": [
+     4,
+     3
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "DAT-01",
+   "ev": "Weak",
+   "w": 0.5,
+   "default": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "DAT-02",
+   "ev": "Strong",
+   "w": 1.0,
+   "default": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     5
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     5
+    ],
+    "adj_risk": "High"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     5
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "DAT-03",
+   "ev": "Moderate",
+   "w": 0.75,
+   "default": {
+    "cell": [
+     3,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "round": {
+    "cell": [
+     3,
+     3
+    ],
+    "risk": "Medium",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "maximpact": {
+    "cell": [
+     3,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "DAT-04",
+   "ev": "Weak",
+   "w": 0.5,
+   "default": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "round": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "DAT-05",
+   "ev": "Weak",
+   "w": 0.5,
+   "default": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     3
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "DAT-06",
+   "ev": "Weak",
+   "w": 0.5,
+   "default": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "INF-01",
+   "ev": "Strong",
+   "w": 1.0,
+   "default": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     5
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     5
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "INF-02",
+   "ev": "Strong",
+   "w": 1.0,
+   "default": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     5
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     5
+    ],
+    "adj_risk": "High"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     5
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "INF-03",
+   "ev": "Moderate",
+   "w": 0.75,
+   "default": {
+    "cell": [
+     3,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     3,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "maximpact": {
+    "cell": [
+     3,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "INF-04",
+   "ev": "Weak",
+   "w": 0.5,
+   "default": {
+    "cell": [
+     2,
+     4
+    ],
+    "risk": "Medium",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "round": {
+    "cell": [
+     2,
+     4
+    ],
+    "risk": "Medium",
+    "adj_cell": [
+     3,
+     3
+    ],
+    "adj_risk": "Medium"
+   },
+   "maximpact": {
+    "cell": [
+     2,
+     4
+    ],
+    "risk": "Medium",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "INF-05",
+   "ev": "Strong",
+   "w": 1.0,
+   "default": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     4,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "INF-06",
+   "ev": "Moderate",
+   "w": 0.75,
+   "default": {
+    "cell": [
+     3,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     3,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "maximpact": {
+    "cell": [
+     3,
+     4
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  },
+  {
+   "id": "INF-07",
+   "ev": "Weak",
+   "w": 0.5,
+   "default": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "round": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   },
+   "maximpact": {
+    "cell": [
+     4,
+     5
+    ],
+    "risk": "High",
+    "adj_cell": [
+     3,
+     4
+    ],
+    "adj_risk": "High"
+   }
+  }
+ ],
+ "variants": {
+  "default": {
+   "before": {
+    "Medium": 4,
+    "High": 17
+   },
+   "after": {
+    "Medium": 7,
+    "High": 14
+   },
+   "risk_changes": 3,
+   "cell_changes": 11,
+   "changed_ids": [
+    "SVC-05",
+    "DAT-03",
+    "DAT-04"
+   ],
+   "occupied": 5
+  },
+  "round": {
+   "before": {
+    "Medium": 5,
+    "High": 16
+   },
+   "after": {
+    "Medium": 8,
+    "High": 13
+   },
+   "risk_changes": 3,
+   "cell_changes": 8,
+   "changed_ids": [
+    "SVC-05",
+    "DAT-04",
+    "DAT-05"
+   ],
+   "occupied": 6
+  },
+  "maximpact": {
+   "before": {
+    "High": 19,
+    "Medium": 2
+   },
+   "after": {
+    "Medium": 3,
+    "High": 18
+   },
+   "risk_changes": 3,
+   "cell_changes": 12,
+   "changed_ids": [
+    "GOV-01",
+    "GOV-03",
+    "INF-04"
+   ],
+   "occupied": 6
+  }
+ },
+ "agree_default_vs_round": 20,
+ "agree_default_vs_max": 19,
+ "example": {
+  "cell": [
+   4,
+   4
+  ],
+  "risk": "High",
+  "adj_cell_half": [
+   3,
+   4
+  ],
+  "adj_risk_half": "High",
+  "box_risk": {
+   "High": 243
+  }
+ },
+ "raters": {
+  "alpha_risk_level": 0.5576688955404945,
+  "all_runs_same": 0.5714285714285714,
+  "models_same": 0.7142857142857143,
+  "alpha_models": 0.5931423074280217,
+  "model_vs_catalogue_same": {
+   "claude": 0.7142857142857143,
+   "gemini": 0.8095238095238095,
+   "gpt": 0.8095238095238095
+  },
+  "dist": {
+   "claude": {
+    "Low": 4,
+    "High": 16,
+    "Medium": 1
+   },
+   "gemini": {
+    "Medium": 5,
+    "Low": 2,
+    "High": 14
+   },
+   "gpt": {
+    "High": 18,
+    "Medium": 2,
+    "Low": 1
+   }
+  }
+ }
+}
